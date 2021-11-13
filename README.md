@@ -17,7 +17,7 @@
   - jupyter
   ```conda install -c conda-forge jupyterlab```
   
-  - R
+  - R 
   ```conda install -c conda-forge r-base=4.1.1```
   ```conda install -c conda-forge r-irkernel=1.2```
   ```
