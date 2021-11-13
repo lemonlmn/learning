@@ -1,0 +1,56 @@
+* learning
+
+** virtual environment 
+
+*** start new project
+
+- create new ennvironment   
+#+BEGIN_SRC shell
+conda create --name learning
+#+END_SRC
+
+- activate the environment  
+#+BEGIN_SRC bash
+conda activate learning
+#+END_SRC
+
+- install packages  
+  - basic data wrangling python package 
+  #+BEGIN_SRC bash
+  conda install pandas
+  #+END_SRC
+  
+  - jupyter
+  #+BEGIN_SRC bash
+  conda install -c conda-forge jupyterlab
+  #+END_SRC
+  
+  - R 
+  #+BEGIN_SRC bash
+  conda install -c conda-forge r-base=4.1.1
+  conda install -c conda-forge r-irkernel=1.2
+  #+END_SRC
+  
+  #+BEGIN_SRC R
+  IRkernel::installspec(user = TRUE)  # specify for this
+  #+END_SRC
+
+*** terminal open tool
+
+- open Rstudio  
+#+BEGIN_SRC bash
+open -na Rstudio
+#+END_SRC
+
+*** udpate conda
+
+#+BEGIN_SRC bash
+conda update -n base conda
+#+END_SRC
+
+*** search 
+
+#+BEGIN_SRC bash
+conda search r-base
+conda search -c conda-forge r-base
+#+END_SRC
