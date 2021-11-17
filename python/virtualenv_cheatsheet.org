@@ -1,0 +1,89 @@
+#+TITLE: Python Virtual Environment Cheatsheet
+
+* Conda
+  - Conda is package manager and virtual environment manager for Python.
+  - Reference: https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html
+** Setup
+   Reference: https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html
+** Usual operations
+   Cheat sheet: https://docs.conda.io/projects/conda/en/latest/_downloads/843d9e0198f2a193a3484886fa28163c/conda-cheatsheet.pdf
+*** list virtual environments
+    #+begin_src bash
+      conda info --envs
+    #+end_src
+*** create new virtual environment
+    #+begin_src bash
+      # general syntax
+      conda create --name NEW_ENVNAME pkgs_to_install ...
+
+      # e.g. create a snowflakes envirtualenv, and install biopython in it
+      conda create --name snowflakes biopython
+
+      # specify the version of python
+      conda create --name snakes python=3.9
+    #+end_src
+*** activate virtual environment
+    #+begin_src bash
+      # for conda version 4.6 or after
+      conda activate ENVNAME
+
+      # for conda version prior to 4.6
+
+      # Windows:
+      activate ENVNAME
+
+      # macOS and Linux:
+      source activate ENVNAME
+    #+end_src
+*** search package
+    #+begin_src bash
+      conda search pkgs
+
+      # e.g.
+      conda search beautifulsoup4
+    #+end_src
+*** add channel
+    You can add channel for convenience, e.g. [[https://conda-forge.org/][conda-forge]]
+    #+begin_src bash
+      conda config --add channels conda-forge
+      conda config --set channel_priority strict
+    #+end_src
+*** install packages
+    #+begin_src bash
+      conda install pkgs ...
+
+      # e.g.
+      conda install beautifulsoup4
+
+      # can specify the version if needed
+      conda install beautifulsoup4=4.9.3
+
+      # can also specify the channel, e.g. conda-forge
+      conda install -c conda-forge pkg ...
+    #+end_src
+*** list pakcages in the virtual environment
+    #+begin_src bash
+      # list the current virtual environment
+      conda list
+
+      # list a specified virtual environment
+      conda list --name ENVNAME
+    #+end_src
+*** deactivate virtual environment
+    #+begin_src bash
+      conda deactivate
+    #+end_src
+*** remove virtual environment
+    #+begin_src bash
+      conda remove --name ENVNAME --all
+    #+end_src
+*** sharing virtual environment
+**** export an environment to a yaml file
+     #+begin_src bash
+       conda env export --name ENVNAME > envname.yml
+     #+end_src
+**** create an environment from yaml file
+     #+begin_src bash
+       conda env create --file envname.yml
+     #+end_src
+
