@@ -2,6 +2,10 @@
 
 ** virtual environment 
 
+*** install/uninstall conda
+
+rm -rf ~/opt/miniconda3
+
 *** start new project
 
 - create new ennvironment   
@@ -22,7 +26,7 @@ conda activate learning
   
   - jupyter
   #+BEGIN_SRC bash
-  conda install -c conda-forge jupyterlab
+   
   #+END_SRC
   
   - R 
@@ -32,7 +36,7 @@ conda activate learning
   #+END_SRC
   
   #+BEGIN_SRC R
-  IRkernel::installspec(user = TRUE)  # specify for this
+  IRkernel::installspec(user = TRUE)  # specify for this environment
   #+END_SRC
 
 *** terminal open tool
