@@ -87,3 +87,78 @@
        conda env create --file envname.yml
      #+end_src
 
+* Python Venv
+  - ~python venv~ is a Python module that provides virtual environment
+    - each virtual environment lives in a separate directory, where the Python libraries belonging to the virtual environment is stored
+    - so we can put the directory under each project's directory ,preferrably with the same name
+    - note that ~python venv~ provides only virtual environment, but not package management as in conda
+    - after activating the virtual environment, Python packages can be installed using the usual tools such as ~pip~
+  - Reference:
+    - https://docs.python.org/3/library/venv.html
+    - https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/#creating-a-virtual-environment
+
+** Setup
+   The ~venv~ module is included in the Python standard library for Python 3.3 or later, so does not require additional installation.
+** Usual operations
+*** create new virtual environment
+    #+begin_src bash
+      # general commandd:
+      #  python3 -m venv ENV_DIR
+
+      # so assuming you are in the project directory, and it is convenient
+      # to just name the virtual environement directory as "env"
+      python3 -m venv env
+
+      # note that this "env" directory should be excluded from version
+      # control such as .git, by adding it to .gitignore
+    #+end_src
+*** activate virtual environment
+    #+begin_src bash
+      # assuming already in project directory
+      # and the virtual environment directory is "env"
+      source env/bin/activate
+    #+end_src
+*** install package
+    Once a virtual environment is activated, packages can be installed in the usual ways, e.g. with ~pip~:
+    #+begin_src bash
+      python3 -m pip install requests
+      # or install specific versions
+      python3 -m pip install requests==2.18.4
+      # or with version range restriction
+      python3 -m pip install requests>=2.0.0,<3.0.0
+      # or pre-releases versions of packages
+      python3 -m pip install --pre requests
+      # or install optional extras of a package
+      python3 -m pip install requests[security]
+    #+end_src
+
+    To install from other package indexes than the [[https://packaging.python.org/glossary/#term-Python-Package-Index-PyPI][Python Package Index (PyPI)]]
+    #+begin_src bash
+      # use the --index-url flag to use other package index
+      python3 -m pip install --index-url http://index.example.com/simple/ SomeProject
+      # use --extra-index-url to use PyPI and the other package index
+      python3 -m pip install --extra-index-url http://index.example.com/simple/ SomeProject
+    #+end_src
+*** Upgrade packages
+    To update package in ~pip~:
+    #+begin_src bash
+      # use the --upgrade flag
+      python3 -m pip install --upgrade requests
+    #+end_src
+*** deactivate virtual environment
+    #+begin_src bash
+      deactivate
+    #+end_src
+*** remove virtual environment
+    Simply remove the virtual environment directory in order to remove the virtual environment.
+*** sharing virtual environment
+**** freeze an environment packages to a requirements file
+     #+begin_src bash
+       python3 -m pip freeze > requirements.txt
+     #+end_src
+**** install packages from requirements file
+     #+begin_src bash
+       # use the -r flag
+       python3 -m pip install -r requirements.txt
+     #+end_src
+
